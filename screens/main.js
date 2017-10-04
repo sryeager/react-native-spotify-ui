@@ -1,43 +1,43 @@
 /**
  * Created by ggoma on 12/23/16.
  */
-import React, { Component } from "react";
-import { View, StyleSheet } from "react-native";
-import {Navigator} from "react-native-deprecated-custom-components";
+import React, {Component} from 'react'
+import {View, StyleSheet} from 'react-native'
+import {Navigator} from 'react-native-deprecated-custom-components'
 
-import Landing from "./Landing";
-import Browse from "./Browse";
+import Landing from './Landing'
+import Browse from './Browse'
 
-import Footer from "./common/footer";
-import TabBarNavigation from "./common/tab-bar-navigation";
+import Footer from './common/footer'
+import TabBarNavigation from './common/tab-bar-navigation'
 
 var ROUTES = {
   landing: Landing,
   browser: Browse,
-};
+}
 
 export default class Main extends Component {
   renderScene(route, navigator) {
-    var Component = ROUTES[route.name];
+    var Component = ROUTES[route.name]
 
-    return <Component route={route} navigator={navigator} />;
+    return <Component route={route} navigator={navigator} />
   }
 
   configureScene(route) {
     if (route.sceneConfig) {
-      return route.sceneConfig;
+      return route.sceneConfig
     }
     return {
       ...CustomNavigatorSceneConfigs.FloatFromRight,
       gestures: {},
-    };
+    }
   }
 
   render() {
     return (
       <View style={styles.container}>
         <Navigator
-          initialRoute={{ name: "landing" }}
+          initialRoute={{name: 'landing'}}
           renderScene={this.renderScene}
           configureScene={route => ({
             ...Navigator.SceneConfigs.VerticalDownSwipeJump,
@@ -53,7 +53,7 @@ export default class Main extends Component {
         />
         <TabBarNavigation ref="tab" />
       </View>
-    );
+    )
   }
 }
 
@@ -61,4 +61,4 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-});
+})

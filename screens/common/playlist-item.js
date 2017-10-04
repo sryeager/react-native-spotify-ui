@@ -1,13 +1,13 @@
 /**
  * Created by ggoma on 12/22/16.
  */
-import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import React from 'react'
+import {View, Text, Image, StyleSheet} from 'react-native'
 
-import D from "./dimensions";
+import D from './dimensions'
 
 function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
 
 export default props => {
@@ -17,19 +17,17 @@ export default props => {
         source={props.source}
         style={[
           styles.album,
-          props.circle ? { borderRadius: D.width * 4.2 / 10 / 2 } : {},
+          props.circle ? {borderRadius: D.width * 4.2 / 10 / 2} : {},
         ]}
       />
 
-      <Text style={styles.text}>
-        {props.title}
-      </Text>
+      <Text style={styles.text}>{props.title}</Text>
       <Text style={styles.followers}>
         {numberWithCommas(props.followers)} FOLLOWERS
       </Text>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -40,7 +38,7 @@ const styles = StyleSheet.create({
   album: {
     width: D.width * 4.2 / 10,
     height: D.width * 4.2 / 10,
-    backgroundColor: "white",
+    backgroundColor: 'white',
   },
 
   img: {
@@ -51,17 +49,17 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: 10,
-    color: "white",
-    fontWeight: "600",
-    alignSelf: "center",
+    color: 'white',
+    fontWeight: '600',
+    alignSelf: 'center',
     marginTop: 8,
   },
 
   followers: {
     fontSize: 8,
-    color: "gray",
-    alignSelf: "center",
-    fontWeight: "600",
+    color: 'gray',
+    alignSelf: 'center',
+    fontWeight: '600',
     marginTop: 4,
   },
-});
+})
