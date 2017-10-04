@@ -43,7 +43,7 @@ export default class CoverFlow extends Component {
           page_width={D.width}
           width={width}
           height={height}
-          source={require('../../assets/images/1.jpg')}
+          source={require('../../assets/images/Worry.jpg')}
         />
         <CoverFlowItem
           page_width={D.width}
