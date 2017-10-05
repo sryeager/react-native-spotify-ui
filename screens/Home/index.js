@@ -43,7 +43,9 @@ export default class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.scrollview}>{this.renderPlaylists()}</ScrollView>
+        <ScrollView style={styles.scrollview}>
+          {this.renderPlaylists()}
+        </ScrollView>
         {/*for the gap*/}
         <View style={{height: TOGETHER}} />
         <Header name="HOME" />

@@ -71,7 +71,7 @@ export default class AppContainer extends React.Component {
     return (
       <View style={styles.container}>
         <Navigator
-          ref={ref => this.navigator = ref}
+          ref={ref => (this.navigator = ref)}
           getRef={ref => (this.navigator = ref)}
           initialRoute={{name: 'Home'}}
           renderScene={this.renderScene}

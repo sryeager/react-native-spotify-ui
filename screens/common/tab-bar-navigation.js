@@ -26,21 +26,18 @@ export default class tabBarNavigation extends Component {
     'ios-book-outline',
   ]
 
-  openTab = (i) => {
+  openTab = i => {
     this.setState({selected: i})
     console.log(this.details[i])
     console.log(this.details)
-    this.props.context.navigator.replace({"name": this.details[i]})
+    this.props.context.navigator.replace({name: this.details[i]})
   }
 
   renderIcons() {
     return this.details.map((item, i) => {
       const color = this.state.selected == i ? '#41b177' : '#bdbec2'
       return (
-        <TouchableWithoutFeedback
-          onPress={() => this.openTab(i)}
-          key={i}
-        >
+        <TouchableWithoutFeedback onPress={() => this.openTab(i)} key={i}>
           <View style={styles.tab_item}>
             <Ionicons name={this.icons[i]} color={color} size={24} />
             <Text style={[styles.text, {color}]}>{item}</Text>

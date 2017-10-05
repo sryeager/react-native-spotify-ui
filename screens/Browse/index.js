@@ -20,5 +20,5 @@ const styles = StyleSheet.create({
   },
   general: {
     color: 'white',
-  }
+  },
 })
