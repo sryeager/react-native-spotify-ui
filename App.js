@@ -8,11 +8,12 @@ import {
   Text,
 } from 'react-native'
 
+import {ROUTES} from './screens/routes'
+import {Navigator} from 'react-native-deprecated-custom-components'
 import {FontAwesome} from 'react-native-vector-icons'
-
-import Main from './screens/main'
-
+import TabBarNavigation from './screens/common/tab-bar-navigation'
 import cacheAssetsAsync from './utilities/cacheAssetsAsync'
+import Footer from './screens/common/footer'
 
 export default class AppContainer extends React.Component {
   state = {
@@ -21,6 +22,22 @@ export default class AppContainer extends React.Component {
 
   componentWillMount() {
     this._loadAssetsAsync()
+  }
+
+  renderScene(route, navigator) {
+    var Component = ROUTES[route.name]
+
+    return <Component route={route} navigator={navigator} />
+  }
+
+  configureScene(route) {
+    if (route.sceneConfig) {
+      return route.sceneConfig
+    }
+    return {
+      ...CustomNavigatorSceneConfigs.FloatFromRight,
+      gestures: {},
+    }
   }
 
   async _loadAssetsAsync() {
@@ -53,7 +70,24 @@ export default class AppContainer extends React.Component {
     }
     return (
       <View style={styles.container}>
-        <Main />
+        <Navigator
+          ref={ref => this.navigator = ref}
+          getRef={ref => (this.navigator = ref)}
+          initialRoute={{name: 'Home'}}
+          renderScene={this.renderScene}
+          configureScene={route => ({
+            ...Navigator.SceneConfigs.VerticalDownSwipeJump,
+            gestures: false,
+          })}
+          style={styles.container}
+        />
+        <Footer
+          ref="footer"
+          hide={() => this.refs.tab.hide()}
+          show={() => this.refs.tab.show()}
+          hideTabBarNavigation={v => this.refs.tab.setHeight(v)}
+        />
+        <TabBarNavigation context={this} ref="tab" />
       </View>
     )
   }
@@ -62,7 +96,6 @@ export default class AppContainer extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
   },
   statusBarUnderlay: {
     height: 24,

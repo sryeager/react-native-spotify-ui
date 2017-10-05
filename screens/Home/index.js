@@ -1,18 +1,11 @@
-/**
- * Created by ggoma on 12/22/16.
- */
 import React, {Component} from 'react'
 import {View, ScrollView, Text, StyleSheet} from 'react-native'
-
 import Header from '../common/header'
-
 import PlayList from '../common/playlist'
-
 import img from '../common/imgs'
-
 import {TOGETHER} from '../common/footer'
 
-export default class Landing extends Component {
+export default class Home extends Component {
   state = {
     playlists: this.generatePlaylists(img, 5),
   }
@@ -24,12 +17,16 @@ export default class Landing extends Component {
     'New Music Friday!',
   ]
 
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('shouldComponentUpdate in home')
+    return true
+  }
+
   generatePlaylists(array, size) {
     let results = []
     while (array.length) {
       results.push(array.splice(0, size))
     }
-    console.log(results)
     return results
   }
 
@@ -46,7 +43,7 @@ export default class Landing extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.sv}>{this.renderPlaylists()}</ScrollView>
+        <ScrollView style={styles.scrollview}>{this.renderPlaylists()}</ScrollView>
         {/*for the gap*/}
         <View style={{height: TOGETHER}} />
         <Header name="HOME" />
@@ -60,7 +57,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'black',
   },
-  sv: {
+  scrollview: {
     paddingTop: 72,
   },
 })
