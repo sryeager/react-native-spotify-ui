@@ -1,15 +1,14 @@
-/**
- * Created by ggoma on 12/23/16.
- */
-import React from 'react'
-import {Text, StyleSheet, View, ScrollView} from 'react-native'
+import React, {Component} from 'react'
+import {View, ScrollView, Text, StyleSheet} from 'react-native'
+import Header from '../common/header'
+import {TOGETHER} from '../common/footer'
 
 export default () => {
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.sv}>
-        <Text style={styles.text}>Foo</Text>
-      </ScrollView>
+      <View style={{height: TOGETHER}} />
+      <Header name="BROWSE" />
+      <Text style={styles.general}>Browse for stuff</Text>
     </View>
   )
 }
@@ -19,10 +18,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'black',
   },
-  text: {
+  general: {
     color: 'white',
-  },
-  sv: {
-    paddingTop: 72,
-  },
+  }
 })

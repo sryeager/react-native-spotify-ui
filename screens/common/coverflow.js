@@ -1,6 +1,3 @@
-/**
- * Created by ggoma on 12/23/16.
- */
 import React, {Component} from 'react'
 import {
   View,
@@ -12,9 +9,7 @@ import {
 } from 'react-native'
 
 import {Ionicons} from 'react-native-vector-icons'
-
 import D from './dimensions'
-
 import CoverFlowItem from './coverflow-item'
 
 export default class CoverFlow extends Component {

@@ -1,9 +1,5 @@
-/**
- * Created by ggoma on 12/22/16.
- */
 import React, {Component} from 'react'
 import {View, Text, ScrollView, StyleSheet} from 'react-native'
-
 import PlaylistItem from './playlist-item'
 
 export default class PlayList extends Component {

@@ -1,9 +1,5 @@
-/**
- * Created by ggoma on 12/22/16.
- */
 import React from 'react'
 import {View, Text, Image, StyleSheet} from 'react-native'
-
 import D from './dimensions'
 
 function numberWithCommas(x) {

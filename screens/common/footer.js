@@ -1,6 +1,3 @@
-/**
- * Created by ggoma on 12/23/16.
- */
 import React, {Component} from 'react'
 import {
   Animated,
