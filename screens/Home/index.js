@@ -25,7 +25,6 @@ export default class Home extends Component {
   generatePlaylists(array, size) {
     // avoid mutating the array
     let p = array.slice()
-
     let results = []
     while (p.length) {
       results.push(p.splice(0, size))
@@ -44,7 +43,6 @@ export default class Home extends Component {
   }
 
   render() {
-    console.log(this.state.playlists)
     return (
       <View style={styles.container}>
         <ScrollView style={styles.scrollview}>
