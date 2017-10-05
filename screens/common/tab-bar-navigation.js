@@ -1,6 +1,3 @@
-/**
- * Created by ggoma on 12/23/16.
- */
 import React, {Component} from 'react'
 import {
   Animated,
@@ -12,6 +9,7 @@ import {
 
 import D from './dimensions'
 import {Ionicons} from 'react-native-vector-icons'
+import {ROUTES} from '../routes'
 
 export default class tabBarNavigation extends Component {
   state = {
@@ -27,12 +25,20 @@ export default class tabBarNavigation extends Component {
     'ios-radio-outline',
     'ios-book-outline',
   ]
+
+  openTab = (i) => {
+    this.setState({selected: i})
+    console.log(this.details[i])
+    console.log(this.details)
+    this.props.context.navigator.replace({"name": this.details[i]})
+  }
+
   renderIcons() {
     return this.details.map((item, i) => {
       const color = this.state.selected == i ? '#41b177' : '#bdbec2'
       return (
         <TouchableWithoutFeedback
-          onPress={() => this.setState({selected: i})}
+          onPress={() => this.openTab(i)}
           key={i}
         >
           <View style={styles.tab_item}>
