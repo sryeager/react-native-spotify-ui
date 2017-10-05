@@ -8,7 +8,6 @@ export default () => {
     <View style={styles.container}>
       <View style={{height: TOGETHER}} />
       <Header name="BROWSE" />
-      <Text style={styles.general}>Browse for stuff</Text>
     </View>
   )
 }
@@ -17,8 +16,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'black',
-  },
-  general: {
-    color: 'white',
   },
 })
