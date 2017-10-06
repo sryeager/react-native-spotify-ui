@@ -2,10 +2,9 @@
 
 import React from 'react'
 import {StyleSheet, Platform, View} from 'react-native'
-import {StyledAlphabetListView} from '../common/searchable-alphabet-listview'
+import {StyledAlphabetListView} from '../common/alphabet-listview'
 import debounce from 'lodash/debounce'
 import {SearchBar} from '../common/searchbar'
-
 export const LIST_HEADER_HEIGHT = Platform.OS === 'ios' ? 42 : 0
 
 const styles = StyleSheet.create({
@@ -16,11 +15,7 @@ const styles = StyleSheet.create({
 
 type Props = any
 
-export class SearchableAlphabetListView extends React.PureComponent<
-  void,
-  Props,
-  void,
-> {
+export class SearchableListView extends React.PureComponent<void, Props, void> {
   searchBar: any = null
 
   _performSearch = (text: string | Object) => {
@@ -41,10 +36,10 @@ export class SearchableAlphabetListView extends React.PureComponent<
     return (
       <View style={styles.wrapper}>
         <SearchBar
-          getRef={ref => (this.searchBar = ref)}
           onChangeText={this.performSearch}
           // if we don't use the arrow function here, searchBar ref is null...
           onSearchButtonPress={() => this.searchBar.unFocus()}
+          //ref={search => this.search = search}
         />
         <StyledAlphabetListView
           headerHeight={
@@ -52,6 +47,7 @@ export class SearchableAlphabetListView extends React.PureComponent<
               ? LIST_HEADER_HEIGHT + StyleSheet.hairlineWidth * 12
               : 0
           }
+          hideSectionList={true}
           showsVerticalScrollIndicator={false}
           keyboardDismissMode="on-drag"
           keyboardShouldPersistTaps="never"
